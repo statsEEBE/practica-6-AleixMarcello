@@ -61,3 +61,18 @@ p_valor
 #p_valor > alpha => aceptamos H0
 
 #d) CASO 4; alpha = 0.05
+library(EnvStats)
+varTest(x, conf.level=0.95)
+c(LCL = 20.99, UCL = 92.14) #desviación estándard
+c(LCL = sqrt(20.99), UCL = sqrt(92.14)) #desviación típica
+
+c((n-1)*var(x)/qchisq(0.975, n-1), (n-1)*var(x)/qchisq(0.025, n-1))
+
+#e) hipotesis para la varianza; alpha = 0.05
+#H0: sigma^2 = sigma0^2
+#H1: sigma^2 no= sigma0^2
+varTest(x, conf.level=0.95, alternative = "two.sided", sigma.squared = 25)
+#p_valor > alpha => aceptamos H0
+
+chiobs = (n-1)*var(x)/25
+chiobs
